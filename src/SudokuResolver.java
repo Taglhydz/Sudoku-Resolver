@@ -55,21 +55,13 @@ public class SudokuResolver implements ISudokuResolver {
         return finito(sudoku);
     }
 
-    public ArrayList<Integer> remove(ArrayList<Integer> a, ArrayList<Integer> b) { //fini
+    public ArrayList<Integer> remove(ArrayList<Integer> a, ArrayList<Integer> b) { //fini à vérifier
         ArrayList<Integer> c = new ArrayList<Integer>();
-        if (a.size() < b.size()) { //la
-            for (int i = 0; i < a.size(); i++) {
-                if (b.contains(a.get(i))) c.add(a.get(i));
-            }
-        }
-        else {
-            for (int i = 0; i < b.size(); i++) {
-                if (a.contains(b.get(i))) c.add(b.get(i));
-            }
-        }
-        /*for (int i = 0; i < a.size(); i++) {
+
+        for (int i = 0; i < a.size(); i++) {
             if (b.contains(a.get(i))) c.add(a.get(i));
-        }   manière d'écrire plus courte mais pas sur qu'elle marche tout le temps à revérifier quand projet finis (enlever le premier if de la methode)*/
+        }
+
         return c;
     }
 
