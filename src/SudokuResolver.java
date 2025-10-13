@@ -84,10 +84,10 @@ public class SudokuResolver implements ISudokuResolver {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 for (int k = 0; k < 9; k++) {
-                    if (tab[i][j] == tab[i][k] && j != k && (tab[i][j] != 0 && tab[i][k] != 0)) return false;
-                    if (tab[j][i] == tab[k][i] && j != k && (tab[i][j] != 0 && tab[i][k] != 0)) return false;
+                    if (tab[i][j] == tab[i][k] && j != k && tab[i][j] != 0) return false;
+                    if (tab[j][i] == tab[k][i] && j != k && tab[j][i] != 0) return false;
                 }
-                if (tab[i][j] == 0) return false; // a décommenter quand finito finis
+                if (tab[i][j] == 0) return false;
             }
         }
         return true;
