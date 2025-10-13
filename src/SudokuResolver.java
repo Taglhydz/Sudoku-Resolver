@@ -48,7 +48,7 @@ public class SudokuResolver implements ISudokuResolver {
                     }
                 }
             }
-            /*itr++;*/
+            // itr++;
         }
 
         sudokuDisplayer.display(sudoku);
