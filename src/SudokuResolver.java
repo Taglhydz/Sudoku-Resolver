@@ -8,54 +8,34 @@ public class SudokuResolver implements ISudokuResolver {
     }
 
     public boolean resolve(int[][] sudoku) {
-        sudokuDisplayer.display(sudoku);
-        //moi qui fait
-        int itr = 0;
-        int nbErr = 0;
-        int nbCorrect = 0;
-        int tmpI = 0;
-        int tmpJ = 0;
-        int maxNbErr = 40;
-        int[][] cloneSudoku;
-        boolean sudokuResolu = false;
-        ArrayList<Integer> tmpRm = new ArrayList<Integer>();
 
+        while (!finito(sudoku)) {
+            sudokuDisplayer.display(sudoku);
 
-        while (!finito(sudoku) /*itr < 400*/){
-            for (int i = 0; i < 9; i++ ){ // tout parcourir le sudoku(sudoku)
-                for (int j = 0; j < 9; j++){
-                    if (sudoku[i][j] == 0){ //si la case est vide
+            boolean changed = false;
+
+            for (int i = 0; i < 9; i++ ) { // tout parcourir le sudoku(sudoku)
+                for (int j = 0; j < 9; j++) {
+                    if (sudoku[i][j] == 0) { //si la case est vide
+
                         ArrayList<Integer> elim = new ArrayList<Integer>(this.remove(remove(getValuesSquare(i, j, sudoku), getValuesRow(i, sudoku)), getValuesColumn(j, sudoku)));
-                        if (elim.size() < 1) return finito(sudoku);
-
-                        else if (elim.size() > 1) {
-                            nbErr++;
-                            
-                            if (nbErr > maxNbErr) {
-                                for (int k = 0; k < elim.size(); k++)
-                                {
-                                    cloneSudoku = sudoku.clone();
-                                    cloneSudoku[i][j] = elim.get(k);
-                                    sudokuResolu = resolve(cloneSudoku);
-                                    if (sudokuResolu) {
-                                        sudoku = cloneSudoku;
-                                        return true;
-                                    }
-                                }
-                            } 
+                        
+                        if (elim.size() == 1) {
+                            sudoku[i][j] = elim.get(0);
+                            changed = true;
                         }
-                        else sudoku[i][j] = elim.get(0); //rempli le sudoku d'une valeur trouver
                     }
                 }
             }
-            // itr++;
+
+            if (!changed) break;
         }
 
         sudokuDisplayer.display(sudoku);
         return finito(sudoku);
     }
 
-    public ArrayList<Integer> remove(ArrayList<Integer> a, ArrayList<Integer> b) { //fini à vérifier
+    public ArrayList<Integer> remove(ArrayList<Integer> a, ArrayList<Integer> b) { //fini
         ArrayList<Integer> c = new ArrayList<Integer>();
 
         for (int i = 0; i < a.size(); i++) {
