@@ -80,7 +80,7 @@ public class SudokuResolver implements ISudokuResolver {
         return listReversed;
     }
 
-    public boolean finito(int[][] tab) {
+    public boolean finito(int[][] tab) { //fini
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 for (int k = 0; k < 9; k++) {
@@ -93,25 +93,18 @@ public class SudokuResolver implements ISudokuResolver {
         return true;
     }
 
-    public ArrayList<Integer> getValuesSquare(int x, int y, int[][] tab) {//ex 2 et 7
+    public ArrayList<Integer> getValuesSquare(int x, int y, int[][] tab) { // normalement fini mais à verifier
         ArrayList<Integer> listCarre = new ArrayList<Integer>();
-        int a = 0, b = 0;
-        for (int i = x+1; i < x+1 + 3; i++) { //tant que 2 < 5
-            for (int j = y+1; j < y+1 + 3; j++) { // tant que 7 < 10
-                if (i % 3 == 0 && j % 3 == 0) { //si 2 % 3 == 0 ou 7 % 3 == 0
-                    a = i - 3; //i = 3 - 3 = 0
-                    b = j - 3; //j = 9 - 3 = 6
-                    break;
-                }
+        int a = (x / 3) * 3;
+        int b = (y / 3) * 3;
+
+        for (int i = a; i < a + 3; i++) {
+            for (int j = b; j < b + 3; j++) {
+                if (i == x && j == y) continue;
+                if (tab[i][j] != 0) listCarre.add(tab[i][j]);
             }
         }
-        for (int k = a; k < 3 + a; k++) {//tant que 0 < 3 + 0
-            for (int l = b; l < 3 + b; l++) {//tant que 6 < 6+3=9
-                if ( k == x && l == y) break;
-                else
-                    if (tab[k][l] != 0) listCarre.add(tab[k][l]);
-            }
-        }
+
         return reverse(listCarre);
     }
 
