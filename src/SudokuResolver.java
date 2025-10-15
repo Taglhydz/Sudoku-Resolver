@@ -4,16 +4,31 @@ import java.util.List;
 
 public class SudokuResolver implements ISudokuResolver {
     private ISudokuDisplayer sudokuDisplayer;
+    private int stepCounter;
+    private long startTime;
 
     public SudokuResolver(ISudokuDisplayer sudokuDisplayer) {
         this.sudokuDisplayer = sudokuDisplayer;
+        this.stepCounter = 0;
     }
 
     public boolean resolve(int[][] sudoku) {
-        return resolveBacktracking(sudoku);
+        startTime = System.currentTimeMillis();
+        stepCounter = 0;
+        boolean result = resolveBacktracking(sudoku);
+        long endTime = System.currentTimeMillis();
+        long elapsedTime = endTime - startTime;
+        
+        System.out.println("\n=== Statistiques ===");
+        System.out.println("Temps écoulé : " + elapsedTime + " ms (" + (elapsedTime / 1000.0) + " secondes)");
+        System.out.println("Nombre d'étapes de backtracking : " + stepCounter);
+        
+        return result;
     }
 
     private boolean resolveBacktracking(int[][] sudoku) {
+        stepCounter++;
+        
         // etape 1 : première methode de déduction classique
         boolean progress = true;
         while (progress && !finito(sudoku)) {

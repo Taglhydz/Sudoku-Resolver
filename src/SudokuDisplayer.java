@@ -1,8 +1,8 @@
 public class SudokuDisplayer implements ISudokuDisplayer {
     // Codes ANSI pour les couleurs
     public static final String RESET = "\u001B[0m";
-    public static final String RED = "\u001B[31m";
-    public static final String CYAN = "\u001B[36m";
+    public static final String RED   = "\u001B[31m";
+    public static final String CYAN  = "\u001B[36m";
     
     // Styles
     public static final String BOLD = "\u001B[1m";
@@ -14,7 +14,6 @@ public class SudokuDisplayer implements ISudokuDisplayer {
                 if (x == 0)
                     stringBuilder.append(CYAN + "| " + RESET);
                 
-                // Colorer les nombres (par exemple, en vert si non-zéro, en rouge si zéro)
                 if (sudoku[y][x] == 0) {
                     stringBuilder.append(RED + BOLD + sudoku[y][x] + " " + RESET);
                 } else {

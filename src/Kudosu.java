@@ -20,9 +20,10 @@ public class Kudosu {
         - 3rd tout fonctionne
        */
     public static void main(String args[]) {
+        System.out.println("Enter the sudoku to resolve :");
         int[][] sudoku = stringToSudoku(System.console().readLine());
         ISudokuDisplayer displayer = new SudokuDisplayer();
-        ISudokuResolver resolver = new SudokuResolver(displayer);
+        ISudokuResolver  resolver  = new SudokuResolver(displayer);
         resolver.resolve(sudoku);
     }
   
