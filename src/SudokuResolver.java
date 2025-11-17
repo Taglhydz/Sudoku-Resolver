@@ -20,8 +20,8 @@ public class SudokuResolver implements ISudokuResolver {
         long elapsedTime = endTime - startTime;
         
         System.out.println("\n=== Statistiques ===");
-        System.out.println("Temps écoulé : " + elapsedTime + " ms (" + (elapsedTime / 1000.0) + " secondes)");
-        System.out.println("Nombre d'étapes de backtracking : " + stepCounter);
+        System.out.println("Temps ecoule : " + elapsedTime + " ms (" + (elapsedTime / 1000.0) + " secondes)");
+        System.out.println("Nombre d'etapes de backtracking : " + stepCounter);
         
         return result;
     }

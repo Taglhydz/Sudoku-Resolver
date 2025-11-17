@@ -7,11 +7,20 @@ Sudoku solver project, it works on several different sudokus but remains limited
 1. Clone the repository
 2. Open the project in your favorite IDE
 3. Open a terminal in the `src` folder
-4. Compile the project with `javac *.java`
-5. Run the project with `java Kudosu`
-6. Enter the sudoku with numbers from left to right, line after line, using 0 for empty cells and tap enter
+4. To run the project in terminal:
+	- Compile the project with `javac *.java`
+	- Run the project with `java Kudosu`
+	- Enter the sudoku with numbers from left to right, line after line, using 0 for empty cells and tap enter
+5. To run the project with a graphical interface:
+	- If you don't have Maven installed, download the "apache-maven-X.X.X-bin.zip" file from https://maven.apache.org/download.cgi, unzip it where you want and add the "bin" folder to your system's PATH variable.
+	- If you don't have JavaFX 25 installed, download the JavaFX SDK 25.0.1 from https://gluonhq.com/products/javafx/, unzip it where you want and add the "lib" folder to your system's PATH variable.
+	- Reload your terminal or restart your IDE to apply the changes
+	- In the terminal, go back in the `src` folder, run `mvn clean javafx:run`
+	- A window should open, enter the numbers in the grid and click on "Résoudre" button
+	- The solution should appear in the grid
+	- If you want some example sudokus to try, click on the "Exemple" button and click on the "Résoudre" button when you feel like it
 
-## Example
+## Example for terminal input
 You can try the following sudokus:
 - 690170003802000700050240000060451000001730002000902506000504030030027948046003275
 - 530700904000400003040300007900045000180000000000098561406000002008900740000020096
