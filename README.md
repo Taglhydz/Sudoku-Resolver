@@ -20,6 +20,11 @@ Sudoku solver project, it works on several different sudokus but remains limited
 	- The solution should appear in the grid
 	- If you want some example sudokus to try, click on the "Exemple" button and click on the "Résoudre" button when you feel like it
 
+## Web version
+The `web` folder compiles the solver to JavaScript with [TeaVM](https://teavm.org/), so it can run in a browser (used for the demo on my portfolio).
+- In the `web` folder, run `mvn clean package`
+- The output is `web/target/js/kudosu.js`, an ES module exporting `solve(grid)` (returns the solved 81-digit grid, or an empty string) and `runTerminal(grid)` (returns the same output as `java Kudosu`)
+
 ## Example for terminal input
 You can try the following sudokus:
 - 690170003802000700050240000060451000001730002000902506000504030030027948046003275
